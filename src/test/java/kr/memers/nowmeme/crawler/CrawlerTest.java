@@ -11,6 +11,7 @@ public class CrawlerTest {
     public void daumCafeCrawlerTest(){
         Crawler daumCafeCrawler = new DaumCafeCrawler();
         ArrayList<Article> articleList = daumCafeCrawler.getArticleList();
+        System.out.println("< " + daumCafeCrawler.getName() + " >");
         for (Article article : articleList) {
             System.out.println(article.getUrl() + " / " + article.getTitle() + " / " + article.getDate());
         }
