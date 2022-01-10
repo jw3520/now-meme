@@ -15,7 +15,6 @@ public class DaumCafeCrawler extends Crawler {
 		setName("daum_cafe");
 		setLogo("css/logo/daum_cafe.png");
 		try {
-			System.out.println(Jsoup.connect(getArticlesUrl()).get());
 			setDoc(Jsoup.connect(getArticlesUrl()).get());
 			putArticleList();
 		} catch(Exception e) {
@@ -26,13 +25,13 @@ public class DaumCafeCrawler extends Crawler {
 	@Override
 	public void putArticleList() {
 		String url = "", title = "", cafeName = "";
-		Iterator<Element> elements_url = getDoc().select(".wrap_thumb").iterator();
-		Iterator<Element> elements_title = getDoc().select(".tit_story").iterator();
-		Iterator<Element> elements_cafeName = getDoc().select(".txt_cafename").iterator();
+		Iterator<Element> elements_url = getDoc().select("a.popular-list__link").iterator();
+		Iterator<Element> elements_title = getDoc().select("strong.popular-list__title").iterator();
+		Iterator<Element> elements_cafeName = getDoc().select("span.popular-list__cafe-name").iterator();
 		
 		for(int i = 0; i < 10; i++) {
 			if(elements_url.hasNext())
-				url = elements_url.next().parent().attr("abs:href");
+				url = elements_url.next().attr("abs:href");
 			if(elements_title.hasNext())
 				title = elements_title.next().text();
 			if(elements_cafeName.hasNext())
