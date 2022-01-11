@@ -30,12 +30,15 @@ public class DaumCafeCrawler extends Crawler {
 		Iterator<Element> elements_cafeName = getDoc().select("span.popular-list__cafe-name").iterator();
 		
 		for(int i = 0; i < 10; i++) {
-			if(elements_url.hasNext())
+			if(elements_url.hasNext()) {
 				url = elements_url.next().attr("abs:href");
-			if(elements_title.hasNext())
+			}
+			if(elements_title.hasNext()) {
 				title = elements_title.next().text();
-			if(elements_cafeName.hasNext())
+			}
+			if(elements_cafeName.hasNext()) {
 				cafeName = elements_cafeName.next().text();
+			}
 
 			getArticleList().add(new Article(url,title,"", cafeName.length() != 0 ? cafeName.substring(3, cafeName.length()) : ""));
 		}
