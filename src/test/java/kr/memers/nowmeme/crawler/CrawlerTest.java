@@ -18,4 +18,15 @@ public class CrawlerTest {
             System.out.println(article.getUrl() + " / " + article.getTitle() + " / " + article.getDate());
         }
     }
+
+    @Test
+    public void dcInsideCrawlerTest(){
+        Crawler daumCafeCrawler = new DcInsideCrawler();
+        ArrayList<Article> articleList = daumCafeCrawler.getArticleList();
+        Assert.assertNotNull(articleList);
+        System.out.println("< " + daumCafeCrawler.getName() + " >");
+        for (Article article : articleList) {
+            System.out.println(article.getUrl() + " / " + article.getTitle() + " / " + article.getDate());
+        }
+    }
 }
