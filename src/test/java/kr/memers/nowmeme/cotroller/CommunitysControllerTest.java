@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = CommunityController.class)
 @Import({DaumCafeCrawler.class, DcInsideCrawler.class})
-public class CommunityControllerTest {
+public class CommunitysControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
