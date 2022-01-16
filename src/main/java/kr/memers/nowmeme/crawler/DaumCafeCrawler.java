@@ -3,17 +3,19 @@ package kr.memers.nowmeme.crawler;
 import kr.memers.nowmeme.dto.Article;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Component;
 
 import java.util.Iterator;
 
+@Component
 public class DaumCafeCrawler extends Crawler {
 
 	public DaumCafeCrawler() {
 		//다음 카페 TOP, 카페인기글
 		setHomeUrl("https://top.cafe.daum.net");
 		setArticlesUrl("https://m.cafe.daum.net");
-		setName("daum_cafe");
-		setLogo("css/logo/daum_cafe.png");
+		setName("daumCafe");
+		setLogo("css/logo/daumCafe.png");
 		try {
 			setDoc(Jsoup.connect(getArticlesUrl()).get());
 			putArticleList();
